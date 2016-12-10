@@ -3,13 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[mylive]]></title>
-      <url>%2F2016%2F11%2F23%2Fmylive%2F</url>
-      <content type="text"><![CDATA[说说鸡汤 16岁那年，3年玩乐带来的是中考失利。 400分，我没有再进入高中学习的机会，某亲戚给我推荐到某不要学费的技校。 迷茫，悔恨，阵痛，那是段灰暗的日子。我至今忘不了那破败的教学楼，永远关不上的破窗，以及用课桌搭的床铺。 17岁，受够这生活的我，利用某公司在学校招廉价劳动力的机会只身去了内蒙。 蓝天 白云 呼伦贝尔大草原 套马的汉子 ~~ 未完待续。。。。。。。。。。。。 作者 [@橘生淮南][3]2016 年 11月 22日]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[Hello World]]></title>
       <url>%2F2016%2F11%2F21%2Fhello-world%2F</url>
       <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
