@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[cod-验证码生成]]></title>
+      <url>%2F2016%2F12%2F12%2Fcod-%E9%AA%8C%E8%AF%81%E7%A0%81%E7%94%9F%E6%88%90%2F</url>
+      <content type="text"><![CDATA[#php原生验证码生成 不积跬步，无以至千里。不积小流，无以成江海 在用惯了TP框架后验证码功能都是直接拿来用，今天复习原生php发现生成验证码真的很简单，我以前还感觉很难，果然不动手永远不会啊。 效果先贴上图片 贴上自己写的简单的验证码 //声明 header(&apos;content-type:image/png&apos;); //生成画布 $img=imagecreatetruecolor(100,50); //生成画笔 $blank=imagecolorallocate($img,0x00,0x00,0x00); $green=imagecolorallocate($img,0x00,0xff,0x00); $white=imagecolorallocate($img,0xff,0xff,0xff); //填充画布背景 imagefill($img,0,0,$white); //生成验证码 $code=&apos;&apos;; for($i=0;$i&lt;4;$i++){ $code.=rand(0,9); } //生成字符函数 imagestring($img,5,15,10,$code,$blank); //生成噪点 for($i=0;$i&lt;100;$i++){ imagesetpixel($img,rand(0,100),rand(0,100),$blank);//生成函数 imagesetpixel($img,rand(0,100),rand(0,100),$green); } imagepng($img);//生成图片 imagedestroy($img);//释放与image 关联的内存]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[email 验证]]></title>
       <url>%2F2016%2F12%2F10%2Femail-%E6%B3%A8%E5%86%8C%E9%AA%8C%E8%AF%81%2F</url>
       <content type="text"><![CDATA[#php email邮箱验证功能的实现 第一次更新博客 有点紧张，O(∩_∩)O哈哈哈~。 我们要实现的功能是用户点击注册时发送验证链接到指定邮箱，用户点击链接激活邮箱！ ###准备工具 phpmailer 数据库结构 一、下载phpmailer 将其配置到你的项目中 二、我们需要在我们项目中将phpmailer的sendMail方法写入到我们的公共函数部分方便后面调用。 function sendMail($to, $title, $content){ require_once(&apos;./Plug/phpmailer/class.phpmailer.php&apos;); $mail = new PHPMailer(); // 设置为要发邮件 $mail-&gt;IsSMTP(); // 是否允许发送HTML代码做为邮件的内容 $mail-&gt;IsHTML(TRUE); $mail-&gt;CharSet=&apos;UTF-8&apos;; // 是否需要身份验证 $mail-&gt;SMTPAuth=TRUE; /* 邮件服务器上的账号是什么 -&gt; 到163注册一个账号即可 */ $mail-&gt;From=&quot;qingchengsnow@sina.cn&quot;; $mail-&gt;FromName=&quot;qingchengsnow&quot;; $mail-&gt;Host=&quot;smtp.sina.cn&quot;; //发送邮件的服务协议地址 $mail-&gt;Username=&quot;qingchengsnow&quot;; $mail-&gt;Password=&quot;gaobieme96&quot;; // 发邮件端口号默认25 $mail-&gt;Port = 25; // 收件人 $mail-&gt;AddAddress($to); // 邮件标题 $mail-&gt;Subject=$title; // 邮件内容 $mail-&gt;Body=$content; return($mail-&gt;Send()); } 以上内容我们只需要修改如下图所示内容 三、当用户点击注册时，我们的主要逻辑如下： &apos;code&apos;=&gt;md5(uniqid()),//获取随机数 $url=SITEURL.&apos;index.php/Home/Ajax/chekemail/id/&apos;.$id.&apos;/code/&apos;.$obj[&apos;userinfo&apos;][&apos;code&apos;]; //生成邮箱激活链接 sendMail(I(&apos;email&apos;),&apos;Tasays注册信息&apos;,&apos;亲爱的&apos;.$obj[&apos;username&apos;].&apos;欢迎注册赵军海的个人blog 点击链接激活email &apos;.$url); //调用phpmailer的sendMail 这样我们的验证接连就会发送到用户邮箱了.具体实现如下图 看看我们有没有收到邮箱验证信息呢？ 下面我们要开始实现点击验证咯 非常简单哦~~~ 我们只需要根据链接传递进来的ID和code查询该用户code是否存，存在的话清空验证码，修改ver状态为1（已验证）即可。贴上代码]]></content>
