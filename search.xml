@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title><![CDATA[cod-验证码生成]]></title>
+      <title><![CDATA[code-验证码生成]]></title>
       <url>%2F2016%2F12%2F12%2Fcode-%E9%AA%8C%E8%AF%81%E7%A0%81%E7%94%9F%E6%88%90%2F</url>
       <content type="text"><![CDATA[#php原生验证码生成 不积跬步，无以至千里。不积小流，无以成江海 在用惯了TP框架后验证码功能都是直接拿来用，今天复习原生php发现生成验证码真的很简单，我以前还感觉很难，果然不动手永远不会啊。 效果先贴上图片 贴上自己写的简单的验证码 //声明 header(&apos;content-type:image/png&apos;); //生成画布 $img=imagecreatetruecolor(100,50); //生成画笔 $blank=imagecolorallocate($img,0x00,0x00,0x00); $green=imagecolorallocate($img,0x00,0xff,0x00); $white=imagecolorallocate($img,0xff,0xff,0xff); //填充画布背景 imagefill($img,0,0,$white); //生成验证码 $code=&apos;&apos;; for($i=0;$i&lt;4;$i++){ $code.=rand(0,9); } //生成字符函数 imagestring($img,5,15,10,$code,$blank); //生成噪点 for($i=0;$i&lt;100;$i++){ imagesetpixel($img,rand(0,100),rand(0,100),$blank);//生成函数 imagesetpixel($img,rand(0,100),rand(0,100),$green); } imagepng($img);//生成图片 imagedestroy($img);//释放与image 关联的内存]]></content>
     </entry>
