@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[php分页]]></title>
+      <url>%2F2016%2F12%2F14%2Fphp%E5%88%86%E9%A1%B5%2F</url>
+      <content type="text"><![CDATA[#php原生验证码生成 看山是山，看水是水，看山不是山，看水不是水，看山还是山，看水还是水 在用惯了TP框架后分页功能也是直接拿来用，这几天复习php原生，今天花了点时间自己写了下分页功能，记录一下吧，并不完善。 效果先贴上图片 贴上自己写的简单的分页 &lt;?php $host=&quot;127.0.0.1&quot;; $name=&quot;root&quot;; $pass=&quot;root&quot;; $con=mysql_connect($host,$name,$pass); mysql_select_db(&quot;blog&quot;); mysql_query(&apos;set names utf8&apos;); $sql=&quot;select name from bl_user&quot;; $results=mysql_query($sql); $sum=mysql_num_rows($results); //分页查询数据 $n=4;//每页显示4条数据 $total=ceil($sum/$n);//向上取整获取总页数 //获取page如果没有的话 默认为1 第一页 if(isset($_GET[&apos;page&apos;])){ $page=$_GET[&apos;page&apos;]; }elseif($_GET[&apos;page&apos;]&lt;1){ $page=1; }else{ $page=1; } $row=($page-1)*$n;//limit的位置 $sql=&quot;select name from bl_user limit $row,$n&quot;;//查询一页的数据 $results=mysql_query($sql); $data=array(); while($count=mysql_fetch_row($results)) { $data[]=$count; } ?&gt; &lt;div&gt; &lt;?php //循环输出内容 foreach ($data as $key =&gt; $value) { echo $value[&apos;0&apos;].&apos;&lt;br /&gt;&lt;br /&gt;&apos;; } //循环出页数 for($i=1;$i&lt;=$total;$i++){ echo &quot;&lt;a href=&apos;page.php?page=$i&apos;&gt;$i&lt;/a&gt;&amp;nbsp;&amp;nbsp&quot;; } //上一页 if($page&gt;1){ echo &quot;&lt;a href=&apos;page.php?page=&quot;.($page-1).&quot;&apos;&gt;上一页&lt;/a&gt;&quot;; } if($page&lt;$total){ echo &quot;&lt;a href=&apos;page.php?page=&quot;.($page+1).&quot;&apos;&gt;下一页&lt;/a&gt;&quot;; } ?&gt;]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[code-验证码生成]]></title>
       <url>%2F2016%2F12%2F12%2Fcode-%E9%AA%8C%E8%AF%81%E7%A0%81%E7%94%9F%E6%88%90%2F</url>
       <content type="text"><![CDATA[#php原生验证码生成 不积跬步，无以至千里。不积小流，无以成江海 在用惯了TP框架后验证码功能都是直接拿来用，今天复习原生php发现生成验证码真的很简单，我以前还感觉很难，果然不动手永远不会啊。 效果先贴上图片 贴上自己写的简单的验证码 //声明 header(&apos;content-type:image/png&apos;); //生成画布 $img=imagecreatetruecolor(100,50); //生成画笔 $blank=imagecolorallocate($img,0x00,0x00,0x00); $green=imagecolorallocate($img,0x00,0xff,0x00); $white=imagecolorallocate($img,0xff,0xff,0xff); //填充画布背景 imagefill($img,0,0,$white); //生成验证码 $code=&apos;&apos;; for($i=0;$i&lt;4;$i++){ $code.=rand(0,9); } //生成字符函数 imagestring($img,5,15,10,$code,$blank); //生成噪点 for($i=0;$i&lt;100;$i++){ imagesetpixel($img,rand(0,100),rand(0,100),$blank);//生成函数 imagesetpixel($img,rand(0,100),rand(0,100),$green); } imagepng($img);//生成图片 imagedestroy($img);//释放与image 关联的内存]]></content>
