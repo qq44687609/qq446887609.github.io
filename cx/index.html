@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="你站的地方风吹过来都是暖的">
+<meta name="description" content="&amp;lt;!doctype html&amp;gt;
+无标题文档body{     margin: 0;     font-family: ‘Open Sans’, sans-serif;     font-size: 14px;     line-height: 20px;     color: #fff;     background: url(./img/cx6.jpg) repeat fixed;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="cx">
 <meta property="og:url" content="https://qq44687609.github.io/cx/index.html">
 <meta property="og:site_name" content="Tasays">
-<meta property="og:description" content="你站的地方风吹过来都是暖的">
-<meta property="og:updated_time" content="2016-12-17T16:19:30.405Z">
+<meta property="og:description" content="&amp;lt;!doctype html&amp;gt;
+无标题文档body{     margin: 0;     font-family: ‘Open Sans’, sans-serif;     font-size: 14px;     line-height: 20px;     color: #fff;     background: url(./img/cx6.jpg) repeat fixed;">
+<meta property="og:updated_time" content="2016-12-17T16:21:56.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cx">
-<meta name="twitter:description" content="你站的地方风吹过来都是暖的">
+<meta name="twitter:description" content="&amp;lt;!doctype html&amp;gt;
+无标题文档body{     margin: 0;     font-family: ‘Open Sans’, sans-serif;     font-size: 14px;     line-height: 20px;     color: #fff;     background: url(./img/cx6.jpg) repeat fixed;">
 
 
 
@@ -288,7 +291,36 @@
 
     
     
-      
+      <p>&lt;!doctype html&gt;</p>
+<html><br><head><br><meta charset="utf-8"><br><title>无标题文档</title><br><style><br>body{<br>     margin: 0;<br>     font-family: ‘Open Sans’, sans-serif;<br>     font-size: 14px;<br>     line-height: 20px;<br>     color: #fff;<br>     background: url(./img/cx6.jpg) repeat fixed;<br>     background-position: left 50% top 50%;<br>    }<br>#one{<br>    margin:0 auto;<br>    font-size: 50px;<br>    max-width:100%;<br>    max-height:100%;<br>    text-align: center;<br>    font-family: ‘JournalRegular’, Arial, sans-serif;<br>    margin-top:168px;<br><br>        }<br>#day,#hour,#min,#sec{<br>    text-align: center;<br>    font-size:35px;<br>    display:inline-block;<br>    }<br>span{<br>    font-size:44px;<br>    display:block;<br>    }<br></style><br></head><br><br><body><br>    <div id="one"><br>        <div id="day"><span id="days"></span><br><em>days</em> /</div><br>        <div id="hour"><span id="hours"></span><br><em>hours</em> /</div><br>        <div id="min"><span id="mins"></span><br><em>min</em> /</div><br>        <div id="sec"><span id="secs"></span><br><em>sec</em> /</div><br>    </div><br>    <script><br><br>    //判断添加01 类型时间<br>    function checktime(i){<br>            if(i<10){
+                i="0"+i;
+                }
+            return i;
+        }
+    //启动时间
+    setInterval("showtime()",1000);
+    //倒计时函数
+    function showtime(){
+    var endtime=new Date("2018/01/01,15:01:01");
+    var nowtime=new Date();
+    var counttime=parseInt(endtime.getTime() - nowtime.getTime())/1000;
+
+    var days=parseInt(counttime/60/60/24);
+    var hours=parseInt(counttime/60/60%24);
+    var mins=parseInt(counttime/60%60);
+    var sec=parseInt(counttime%60);
+    //判断是否小于10小于10在前面加0
+    hours=checktime(hours);
+    mins=checktime(mins);
+    secs=checktime(sec);
+    //输出日期
+    document.getElementById("days").innerHTML=days;
+    document.getElementById("hours").innerHTML=hours;
+    document.getElementById("mins").innerHTML=mins;
+    document.getElementById("secs").innerHTML=secs;
+    }
+</script><br>    <audio id="playy" src="img/Westlife - Beautiful In White (Demo).mp3" autoplay="autoplay" controls loop hidden="true"><br></audio></body><br><br></html>
+
     
   </div>
 
