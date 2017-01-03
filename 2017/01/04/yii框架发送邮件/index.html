@@ -95,7 +95,7 @@
 这两天在研究yii框架，话不多说，直接干！
 1.修改配置文件 这里基础版的配置文件为config/web.php">
 <meta property="og:image" content="http://ohypcu1wt.bkt.clouddn.com/image/png/yiiQQ%E5%9B%BE%E7%89%8720170104002936.png">
-<meta property="og:updated_time" content="2017-01-03T16:38:06.832Z">
+<meta property="og:updated_time" content="2017-01-03T16:41:28.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yii框架发送邮件">
 <meta name="twitter:description" content="#YII框架邮件发送
@@ -392,10 +392,13 @@
    ],  
 </code></pre><hr>
 <p>2.直接在controller中使用</p>
-<pre><code>$mail= Yii::$app-&gt;mailer-&gt;compose(); 
-$mail-&gt;setTo(&apos;***@qq.com&apos;); //要发送给那个人的邮箱 
-</code></pre><p>$mail-&gt;setSubject(“邮件主题”); //邮件主题<br>    $mail-&gt;setTextBody(‘测试text’); //发布纯文字文本<br>$mail-&gt;setHtmlBody(“测试html text”); //发送的消息内容<br>    var_dump($mail-&gt;send()); </p>
-<p>3.定义邮件模版，这样我们就可以更方便的构建我们的邮件模板了</p>
+<pre><code>    $mail= Yii::$app-&gt;mailer-&gt;compose(); 
+    $mail-&gt;setTo(&apos;***@qq.com&apos;); //要发送给那个人的邮箱 
+$mail-&gt;setSubject(&quot;邮件主题&quot;); //邮件主题 
+    $mail-&gt;setTextBody(&apos;测试text&apos;); //发布纯文字文本 
+$mail-&gt;setHtmlBody(&quot;测试html text&quot;); //发送的消息内容 
+    var_dump($mail-&gt;send()); 
+</code></pre><p>3.定义邮件模版，这样我们就可以更方便的构建我们的邮件模板了</p>
 <p>在步骤2中我们定义了viewPath指向common\mail。因此我们可以在该目录下创建新的模版文件seekpass.php,内容自己随便定义就好。</p>
 <pre><code>$res = Yii::$app-&gt;mailer-&gt;compose(&apos;test&apos;) 
     -&gt;setTo(&apos;*******@qq.com&apos;) 
