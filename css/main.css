@@ -1597,9 +1597,9 @@ pre .javascript .function {
   display: block;
   margin: 0 auto;
   padding: 2px;
-  max-width: 100px;
+  width: 150px;
   border: 2px solid #333;
-  height: 100px;
+  height: 150px;
   border-radius: 50%;
 }
 .site-author-name {
@@ -1682,7 +1682,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff2aff;
+  background: #7af4ff;
 }
 .links-of-blogroll {
   font-size: 13px;
