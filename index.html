@@ -370,7 +370,7 @@
 <p>你站的地方风吹过来都是暖的</p>
 </blockquote>
 <hr>
-<p>以前一直感觉JS难，今天学了1天。。。。。。确实TMD难！！！ 才写好个倒计时生成 贴上来吧！！！</p>
+<p>以前一直感觉JS难，今天学了1天。。。。。 才写好个倒计时生成 贴上来吧！！！</p>
 <hr>
 <p>效果先贴上图片<br><img src="http://ohypcu1wt.bkt.clouddn.com/jsdate.png" /><br>
           <!--noindex-->
@@ -500,40 +500,21 @@
 
       
         
-          
-            <p>#YII框架分页</p>
+          <p>#YII框架分页</p>
 <p>学习笔记</p>
 <hr>
 <p>yii框架的分页相对其他简单了许多</p>
 <p><strong>Controller中</strong></p>
 <p>1.加载分页组件</p>
 <pre><code>use yii/data/Paginaction;
-&lt;!-- more --&gt;
-</code></pre><p>2.主体分页代码</p>
-<pre><code>$query=Admin::find();
-
-$count=$query-&gt;count();//计算总数
-
-$page=new pagination(&apos;totalCount&apos;=&gt;$count,&apos;pageSize&apos;=&gt;&apos;2&apos;);
-//总页数和每页显示页数
-
-$list=$query-&gt;offset($page-&gt;offset)-&gt;limit($page-&gt;list);
-//查询
-
-retrun $this-&gt;render(&apos;list&apos;,&apos;list&apos;=&gt;$list,&apos;pages&apos;=&gt;$page);
-//结果和分页样式输出
-</code></pre><p><strong>view识图显示</strong></p>
-<p>显示数据</p>
-<pre><code>foreach ($models as $model) {
-   // display $model here
-   }
-</code></pre><p>显示分页样式</p>
-<p>1.页头加载Linkpager类</p>
-<pre><code>use yii\widgets\LinkPager;
-</code></pre><p>2.显示输出</p>
-<pre><code>echo LinkPage::widget(&apos;pagiation&apos;=&gt;$page);
 </code></pre>
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/05/yii框架分页/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
