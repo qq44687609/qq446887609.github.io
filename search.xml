@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[yii框架分页]]></title>
       <url>%2F2017%2F01%2F05%2Fyii%E6%A1%86%E6%9E%B6%E5%88%86%E9%A1%B5%2F</url>
-      <content type="text"><![CDATA[#YII框架分页 学习笔记 yii框架的分页相对其他简单了许多 Controller中 1.加载分页组件 use yii/data/Paginaction; 2.主体分页代码 $query=Admin::find(); $count=$query-&gt;count();//计算总数 $page=new pagination(&apos;totalCount&apos;=&gt;$count,&apos;pageSize&apos;=&gt;&apos;2&apos;); //总页数和每页显示页数 $list=$query-&gt;offset($page-&gt;offset)-&gt;limit($page-&gt;list); //查询 retrun $this-&gt;render(&apos;list&apos;,&apos;list&apos;=&gt;$list,&apos;pages&apos;=&gt;$page); //结果和分页样式输出 view识图显示 显示数据 foreach ($models as $model) { // display $model here } 显示分页样式 1.页头加载Linkpager类 use yii\widgets\LinkPager; 2.显示输出 echo LinkPage::widget(&apos;pagiation&apos;=&gt;$page);]]></content>
+      <content type="text"><![CDATA[#YII框架分页 学习笔记 yii框架的分页相对其他简单了许多 Controller中 1.加载分页组件 use yii/data/Pagination; 2.主体分页代码 $query=Admin::find(); $count=$query-&gt;count();//计算总数 $page=new pagination(&apos;totalCount&apos;=&gt;$count,&apos;pageSize&apos;=&gt;&apos;2&apos;); //总页数和每页显示页数 $list=$query-&gt;offset($page-&gt;offset)-&gt;limit($page-&gt;list); //查询 retrun $this-&gt;render(&apos;list&apos;,&apos;list&apos;=&gt;$list,&apos;pages&apos;=&gt;$page); //结果和分页样式输出 view识图显示 显示数据 foreach ($models as $model) { // display $model here } 显示分页样式 1.页头加载Linkpager类 use yii\widgets\LinkPager; 2.显示输出 echo LinkPage::widget(&apos;pagiation&apos;=&gt;$page);]]></content>
     </entry>
 
     
