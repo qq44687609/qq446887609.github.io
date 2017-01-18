@@ -102,7 +102,7 @@ yii框架的分页相对其他简单了许多
 Controller中
 1.加载分页组件
 use yii/data/Pagination;">
-<meta property="og:updated_time" content="2017-01-06T03:07:05.209Z">
+<meta property="og:updated_time" content="2017-01-18T03:39:15.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yii框架分页">
 <meta name="twitter:description" content="#YII框架分页
@@ -395,7 +395,7 @@ $count=$query-&gt;count();//计算总数
 $page=new pagination(&apos;totalCount&apos;=&gt;$count,&apos;pageSize&apos;=&gt;&apos;2&apos;);
 //总页数和每页显示页数
 
-$list=$query-&gt;offset($page-&gt;offset)-&gt;limit($page-&gt;list);
+$list=$query-&gt;offset($page-&gt;offset)-&gt;limit($page-&gt;list)-&gt;all();
 //查询
 
 retrun $this-&gt;render(&apos;list&apos;,&apos;list&apos;=&gt;$list,&apos;pages&apos;=&gt;$page);

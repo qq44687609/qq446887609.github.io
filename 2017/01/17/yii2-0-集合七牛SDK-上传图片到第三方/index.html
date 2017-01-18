@@ -96,7 +96,8 @@ composer require qiniu/php-sdk
 注册七牛账号 获取 AK SK（密匙） ，创建资源对象 获取domain(访问域名) bucket(你创建的资源对象名称)">
 <meta property="og:image" content="http://ohypcu1wt.bkt.clouddn.com/AK.png">
 <meta property="og:image" content="http://ohypcu1wt.bkt.clouddn.com/domain.png">
-<meta property="og:updated_time" content="2017-01-17T09:29:01.972Z">
+<meta property="og:image" content="https://qq44687609.github.io/<?php echo $list->cover ?>-product_small">
+<meta property="og:updated_time" content="2017-01-18T03:42:03.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yii2.0 集合七牛SDK 上传图片到第三方">
 <meta name="twitter:description" content="首先，请用composer下载七牛phpSDK (具体参考官方文档)
@@ -406,6 +407,8 @@ $cover = $qiniu-&gt;getLink($key);
         $pics[$key] = $qiniu-&gt;getLink($key);
 }
 </code></pre><p>多图片集合返回json格式</p>
+<p>值得一提的是七牛可以设置多图片样式,比如我就将图片设置成3种,product_small,product_big,product_mid;</p>
+<p>view视图输出<br>           <img src="<?php echo $list->cover ?>-product_small"></p>
 
       
     </div>
