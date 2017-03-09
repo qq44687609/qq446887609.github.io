@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="session," />
+  <meta name="keywords" content="js," />
 
 
 
@@ -84,30 +84,36 @@
 
 
 
-<meta name="description" content="重写session的存储机制
+<meta name="description" content="js 倒计时生成
+你站的地方风吹过来都是暖的
 
 
-便于管理大量的session数据
-便于web服务器集群共享session数据。">
+以前一直感觉JS难，今天学了1天。。。。。 才写好个倒计时生成 贴上来吧！！！
+
+效果先贴上图片">
 <meta property="og:type" content="article">
-<meta property="og:title" content="session入库">
-<meta property="og:url" content="https://qq44687609.github.io/2017/03/09/session入库/index.html">
+<meta property="og:title" content="计时器">
+<meta property="og:url" content="https://qq44687609.github.io/2017/02/10/计时器/index.html">
 <meta property="og:site_name" content="Tasays">
-<meta property="og:description" content="重写session的存储机制
+<meta property="og:description" content="js 倒计时生成
+你站的地方风吹过来都是暖的
 
 
-便于管理大量的session数据
-便于web服务器集群共享session数据。">
-<meta property="og:image" content="http://ohypcu1wt.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170309121239.png">
-<meta property="og:updated_time" content="2017-03-09T04:50:32.360Z">
+以前一直感觉JS难，今天学了1天。。。。。 才写好个倒计时生成 贴上来吧！！！
+
+效果先贴上图片">
+<meta property="og:image" content="http://ohypcu1wt.bkt.clouddn.com/jsdate.png">
+<meta property="og:updated_time" content="2017-03-09T05:21:54.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="session入库">
-<meta name="twitter:description" content="重写session的存储机制
+<meta name="twitter:title" content="计时器">
+<meta name="twitter:description" content="js 倒计时生成
+你站的地方风吹过来都是暖的
 
 
-便于管理大量的session数据
-便于web服务器集群共享session数据。">
-<meta name="twitter:image" content="http://ohypcu1wt.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170309121239.png">
+以前一直感觉JS难，今天学了1天。。。。。 才写好个倒计时生成 贴上来吧！！！
+
+效果先贴上图片">
+<meta name="twitter:image" content="http://ohypcu1wt.bkt.clouddn.com/jsdate.png">
 
 
 
@@ -135,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://qq44687609.github.io/2017/03/09/session入库/"/>
+  <link rel="canonical" href="https://qq44687609.github.io/2017/02/10/计时器/"/>
 
 
 
 
 
-  <title> session入库 | Tasays </title>
+  <title> 计时器 | Tasays </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -295,7 +301,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://qq44687609.github.io/2017/03/09/session入库/">
+  <link itemprop="mainEntityOfPage" href="https://qq44687609.github.io/2017/02/10/计时器/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="橘生淮南">
@@ -319,7 +325,7 @@
             
             
               
-                session入库
+                计时器
               
             
           </h1>
@@ -332,8 +338,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-09T11:47:22+08:00">
-                2017-03-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-10T00:02:39+08:00">
+                2017-02-10
               </time>
             
 
@@ -348,8 +354,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/03/09/session入库/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/09/session入库/" itemprop="commentCount"></span>
+                <a href="/2017/02/10/计时器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/10/计时器/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,66 +381,53 @@
       
 
       
-        <hr>
-<p>重写session的存储机制</p>
-<blockquote>
-<ul>
-<li>便于管理大量的session数据</li>
-<li>便于web服务器集群共享session数据。<a id="more"></a>
-<img src="http://ohypcu1wt.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170309121239.png"></li>
-</ul>
-</blockquote>
-<p>实现：<br>定义（实现）自定义的相关的存储处理函数<br>将其设置为session机制需要的存储函数(告知给session机制，使用我们的函数完成存储处理)</p>
-<p>Session机制，共需要6个存储处理函数:<br>Session_set_save_handler(开始处理器，结束处理器，读处理器，写处理器，删除处理，垃圾回收处理器);</p>
-<h3 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h3><blockquote>
-<p>建立session表<br>表中的记录，对应session文件。<br>create table <code>session</code> (<br>    session_id varchar(40) not null default ‘’,<br>    session_content text,<br>    primary key(session_id)<br>)charset=utf8 engine=myisam;。</p>
+        <h1 id="js-倒计时生成"><a href="#js-倒计时生成" class="headerlink" title="js 倒计时生成"></a>js 倒计时生成</h1><blockquote>
+<p>你站的地方风吹过来都是暖的</p>
 </blockquote>
 <hr>
-<h2 id="垃圾回收操作-gc"><a href="#垃圾回收操作-gc" class="headerlink" title="垃圾回收操作(gc)"></a>垃圾回收操作(gc)</h2><p>在开启session机制过程中，有概率的执行垃圾回收操作。<br>默认的概率为1/1000<br>可以配置php.ini<br>也可设置概率：</p>
-<pre><code>ini_set(&apos;session.gc_probability&apos;, &apos;1&apos;);
-ini_set(&apos;session.gc_divisor&apos;,&apos;4&apos;);
-</code></pre><h3 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h3><pre><code>&lt;?php
+<p>以前一直感觉JS难，今天学了1天。。。。。 才写好个倒计时生成 贴上来吧！！！</p>
+<hr>
+<p>效果先贴上图片<br><img src="http://ohypcu1wt.bkt.clouddn.com/jsdate.png"><br><a id="more"></a></p>
+<hr>
+<p>贴上自己写的简单计时器</p>
+<pre><code>&lt;div id=&quot;one&quot;&gt;
+    &lt;div id=&quot;day&quot;&gt;&lt;span id=&quot;days&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;em&gt;days&lt;/em&gt; /&lt;/div&gt;
+    &lt;div id=&quot;hour&quot;&gt;&lt;span id=&quot;hours&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;em&gt;hours&lt;/em&gt; /&lt;/div&gt;
+    &lt;div id=&quot;min&quot;&gt;&lt;span id=&quot;mins&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;em&gt;min&lt;/em&gt; /&lt;/div&gt;
+    &lt;div id=&quot;sec&quot;&gt;&lt;span id=&quot;secs&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;em&gt;sec&lt;/em&gt; /&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
 
-function session_begin(){
-    $link = mysql_connect(&apos;127.0.0.1&apos;,&apos;root&apos;,&apos;root&apos;);
-    mysql_query(&apos;set names utf8&apos;);
-    mysql_select_db(&apos;session&apos;);
-}
-
-function session_end(){
-    echo &apos;end&apos;.&quot;&lt;br/&gt;&quot;;
-}
-
-function session_read($sess_id){
-
-    $sql = &apos;select session_content from session where session_id = &quot;$sess_id&quot;&apos;;
-    $result = mysql_query($sql);
-    if($row = mysql_fetch_assoc($result)){
-        return $row;
-    }else{
-        return &apos;&apos;;
+//判断添加01 类型时间
+function checktime(i){
+        if(i&lt;10){
+            i=&quot;0&quot;+i;
+            }
+        return i;
     }
-}
+//启动时间
+setInterval(&quot;showtime()&quot;,1000);
+//倒计时函数
+function showtime(){
+var endtime=new Date(&quot;2018/01/01,15:01:01&quot;);
+var nowtime=new Date();
+var counttime=parseInt(endtime.getTime() - nowtime.getTime())/1000;
 
-function session_wirte($sess_id,$sess_content){
-    $time = time();
-    $sql = &quot;replace into session(session_id,session_content,createtime)values(&apos;$sess_id&apos;,&apos;$sess_content&apos;,&apos;$time&apos;)&quot;;
-    mysql_query($sql);
+var days=parseInt(counttime/60/60/24);
+var hours=parseInt(counttime/60/60%24);
+var mins=parseInt(counttime/60%60);
+var sec=parseInt(counttime%60);
+//判断是否小于10小于10在前面加0
+hours=checktime(hours);
+mins=checktime(mins);
+secs=checktime(sec);
+//输出日期
+document.getElementById(&quot;days&quot;).innerHTML=days;
+document.getElementById(&quot;hours&quot;).innerHTML=hours;
+document.getElementById(&quot;mins&quot;).innerHTML=mins;
+document.getElementById(&quot;secs&quot;).innerHTML=secs;
 }
-
-function session_delete($sess_id){
-    $sql = &quot;delete  from session where session_id = &apos;$sess_id&apos;&quot;;
-    mysql_query($sql);
-}
-
-function session_gc($max_lifetime){
-    $time =time();
-    $sql = &quot;delete from session where createtime &lt; &apos;$time&apos;-&apos;$max_lifetime&apos;&quot;;
-    mysql_query($sql);
-}
-
-session_set_save_handler(&apos;session_begin&apos;, &apos;session_end&apos;, &apos;session_read&apos;, &apos;session_wirte&apos;, &apos;session_delete&apos;, &apos;session_gc&apos;);
-</code></pre><p>?&gt;</p>
+</code></pre><p><br>    <audio id="playy" src="img/Westlife - Beautiful In White (Demo).mp3" autoplay="autoplay" controls loop hidden="true"></audio></p>
 
       
     </div>
@@ -458,7 +451,7 @@ session_set_save_handler(&apos;session_begin&apos;, &apos;session_end&apos;, &ap
       
         <div class="post-tags">
           
-            <a href="/tags/session/" rel="tag"># session</a>
+            <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
       
@@ -467,8 +460,8 @@ session_set_save_handler(&apos;session_begin&apos;, &apos;session_end&apos;, &ap
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/10/计时器/" rel="next" title="计时器">
-                <i class="fa fa-chevron-left"></i> 计时器
+              <a href="/2017/01/17/yii2-0-集合七牛SDK-上传图片到第三方/" rel="next" title="yii2.0 集合七牛SDK 上传图片到第三方">
+                <i class="fa fa-chevron-left"></i> yii2.0 集合七牛SDK 上传图片到第三方
               </a>
             
           </div>
@@ -477,8 +470,8 @@ session_set_save_handler(&apos;session_begin&apos;, &apos;session_end&apos;, &ap
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/09/js-ajax滑动星星评分/" rel="prev" title="js+ajax滑动星星评分">
-                js+ajax滑动星星评分 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/09/session入库/" rel="prev" title="session入库">
+                session入库 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -505,8 +498,8 @@ session_set_save_handler(&apos;session_begin&apos;, &apos;session_end&apos;, &ap
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/09/session入库/"
-           data-title="session入库" data-url="https://qq44687609.github.io/2017/03/09/session入库/">
+      <div class="ds-thread" data-thread-key="2017/02/10/计时器/"
+           data-title="计时器" data-url="https://qq44687609.github.io/2017/02/10/计时器/">
       </div>
     
   </div>
@@ -610,7 +603,7 @@ session_set_save_handler(&apos;session_begin&apos;, &apos;session_end&apos;, &ap
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#建表"><span class="nav-number">1.</span> <span class="nav-text">建表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收操作-gc"><span class="nav-number"></span> <span class="nav-text">垃圾回收操作(gc)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上代码"><span class="nav-number">1.</span> <span class="nav-text">上代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#js-倒计时生成"><span class="nav-number">1.</span> <span class="nav-text">js 倒计时生成</span></a></li></ol></div>
             
 
           </div>
