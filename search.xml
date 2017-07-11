@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[TP伪静态 路由重写]]></title>
+      <url>%2F2017%2F07%2F11%2FTP%E4%BC%AA%E9%9D%99%E6%80%81-%E8%B7%AF%E7%94%B1%E9%87%8D%E5%86%99%2F</url>
+      <content type="text"><![CDATA[tp 伪静态 路由重写 这几天网站上线 需要优化 url路径 这个伪静态搞了我1天 我真是猪脑子哦 &lt;– more –&gt;首先呢 咱们的环境当然是apache了 1.首先修改Apache的httpd.conf文件。 确认httpd.conf配置文件中加载了mod_rewrite.so模块，加载的方法是去掉mod_rewrite.so前面的注释#号 将 httpd.conf中的Allowoverride None 将None改为All 2.项目的根目录下面建立一个.htaccess文件，里面写入下面的内容 &lt;IfModule mod_rewrite.c&gt; Options +FollowSymlinks RewriteEngine On RewriteCond %{REQUEST_FILENAME} !-d RewriteCond %{REQUEST_FILENAME} !-f RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1] &lt;/IfModule&gt; 就是TM这个文件搞了我1天!!!!!! url重写 config文件修改 &apos;URL_MODEL&apos; =&gt; &apos;2&apos;, //rewrite模式开启 &apos;URL_HTML_SUFFIX&apos; =&gt; &apos;.html&apos;, //伪静态后缀 &apos;HTML_CACHE_ON&apos; =&gt; true, //路由重写开启 &apos;URL_CASE_INSENSITIVE&apos; =&gt; true, //大小写不区分 &apos;URL_ROUTE_RULES&apos;=&gt;array( //规则 /模块/控制器/方法 &apos;article/:article_id\d&apos; =&gt; &apos;Portal/Article/detail&apos;, &apos;list/:type&apos; =&gt; &apos;Portal/List/index&apos; ),]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[dede二次开发pc端手机端共用后台]]></title>
       <url>%2F2017%2F06%2F09%2Fdede%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91pc%E7%AB%AF%E6%89%8B%E6%9C%BA%E7%AB%AF%E5%85%B1%E7%94%A8%E5%90%8E%E5%8F%B0%2F</url>
       <content type="text"><![CDATA[最近做织梦企业站和pc端和手机端共用后台 手机端栏目交叉获取pc端文章数据时 点击进入的还是pc端文章内容模板 无法实现 双模板 这就用到了二次开发了。然后发现dede竟然也有mvc架构.目录结构说明：|_app |control 控制器(C) |model 模型(M) |templates 视图模板(V) |libraries 类库 |data 配置 |data\helper 小助手 |static 样式，js，图片文件夹 |index.php 统一入口文件 统一入口解析地址http://你的网址/app/index.php?ct=index&amp;ac=savect=index:控制器入口,对应到目录control中的index.php如果RunApp()指定了第三个参数，例如问答中RunApp($ct, $ac , ‘admin’)，说明ct=index:控制器入口,对应到目录control/admin中的index.phpac=save:操作,对应文件index.php中的class index中function ac_save()控制器中将相关功能操作都存放至一个文件中,例如留言板,可以使用:?ct=guestbook&amp;ac={do}统一完成,这样也便于静态化部署. 栏目交叉获取到pc端的文章以列表形式展现在手机端列表模板，我们只需把列表[field:arcurl/] 指向改为如mvc/index.php?ct=arclist&amp;ac=view&amp;id=98[field:id/]在arclist控制器调取文章内容分配到新模板即 ###部分代码 foreach ($arc_news as $val) { $GLOBALS[$val] = $$val; } //载入模板 $this-&gt;SetTemplate(&apos;detail_m.htm&apos;); $this-&gt;Display(); 完整dome下载地址 http://pan.baidu.com/s/1dEK9ykp 密码:o0k2]]></content>
