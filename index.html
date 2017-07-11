@@ -367,39 +367,16 @@
 
       
         
-          
-            <h2 id="tp-伪静态-路由重写"><a href="#tp-伪静态-路由重写" class="headerlink" title="tp 伪静态 路由重写"></a>tp 伪静态 路由重写</h2><blockquote>
+          <h2 id="tp-伪静态-路由重写"><a href="#tp-伪静态-路由重写" class="headerlink" title="tp 伪静态 路由重写"></a>tp 伪静态 路由重写</h2><blockquote>
 <p>这几天网站上线 需要优化 url路径 这个伪静态搞了我1天 我真是猪脑子哦 </p>
 </blockquote>
-<p>&lt;– more –&gt;<br>首先呢 咱们的环境当然是apache了</p>
-<p>1.首先修改Apache的httpd.conf文件。</p>
-<p> 确认httpd.conf配置文件中加载了mod_rewrite.so模块，加载的方法是去掉mod_rewrite.so前面的注释#号</p>
-<p>将 httpd.conf中的Allowoverride  None 将None改为All</p>
-<hr>
-<p>2.项目的根目录下面建立一个.htaccess文件，里面写入下面的内容</p>
-<pre><code>&lt;IfModule mod_rewrite.c&gt;
-Options +FollowSymlinks
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1]
-&lt;/IfModule&gt;
-</code></pre><p>就是TM这个文件搞了我1天!!!!!!</p>
-<hr>
-<h3 id="url重写"><a href="#url重写" class="headerlink" title="url重写"></a>url重写</h3><blockquote>
-<p>config文件修改</p>
-</blockquote>
-<pre><code>&apos;URL_MODEL&apos; =&gt; &apos;2&apos;,                    //rewrite模式开启
-&apos;URL_HTML_SUFFIX&apos; =&gt; &apos;.html&apos;,          //伪静态后缀
-&apos;HTML_CACHE_ON&apos; =&gt; true,               //路由重写开启
-&apos;URL_CASE_INSENSITIVE&apos; =&gt; true,        //大小写不区分
-&apos;URL_ROUTE_RULES&apos;=&gt;array(
-         //规则                      /模块/控制器/方法
-    &apos;article/:article_id\d&apos; =&gt; &apos;Portal/Article/detail&apos;,
-    &apos;list/:type&apos; =&gt; &apos;Portal/List/index&apos;
-),
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/07/11/TP伪静态-路由重写/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
